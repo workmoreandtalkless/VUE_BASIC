@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>el与data的两种写法</title>
+        <!-- 引入Vue -->
+        <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        data与el的两种写法 
+        1. el有两种写法
+            
+    
+    
+    -->
+    <div id="root">
+            <h1>nihao , {{name}}</h1>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止Vue 在启动时生成生产提示 
+    //创建Vue实例
+    // const v = new Vue({
+    //     // el:'#root', //el 第一种写法
+    //     data:{
+    //         name:'guohua',//data 用于存储数据，数据供el所指定的容器去使用，值我们暂时先写成一个对象。
+    //         school:{
+    //             name:"guge",
+    //             address:'new york',
+    //             url:'https://www.google.com/'
+    //         }
+            
+    //     }
+        
+    // })
+    // console.log(v)
+    // v.$mount('#root')
+
+    // setTimeout(
+    //     ()=> {
+    //         v.$mount('#root') //第二种方法,挂载的意思
+    //     },2000
+    // );
+
+    //data的两种写法
+   const v= new Vue({
+        el:'#root', 
+       // 第一种，对象式
+        // data:{
+        //     name:'guohua',//data
+        // }
+
+        //第二种：函数式
+        data(){
+            console.log('@@@',this)
+            return{
+                name: '尚硅谷'
+            }
+        }
+
+        
+    })
+
+
+</script>
+</html>

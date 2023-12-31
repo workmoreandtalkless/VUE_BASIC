@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        
+        
+        双向绑定： -->
+    <div id="demo">
+        <h1>Interpolation</h1>
+        <h1>
+
+           单项数据绑定：<input type="text" v-bind:value = "name">
+           <br>
+    
+           双向数据绑定：<input type="text" v-model:value = "name">
+           <br>
+           如下代码是错误的，因为v-model只能用在表单类元素（输入类元素）
+           <h2 x="shanggugu"></h2>
+
+        </h1>
+        <hr>
+        <h1>
+
+            单项数据绑定：<input type="text" :value = "name">
+            <br>
+     
+            双向数据绑定：<input type="text" v-model = "name">
+            <br>
+            如下代码是错误的，因为v-model只能用在表单类元素（输入类元素）
+            <h2 x="shanggugu"></h2>
+ 
+         </h1>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false //阻止Vue 在启动时生成生产提示 
+        //创建Vue实例
+        new Vue({
+            el:'#demo', //el 用于指定当前Vue示例为哪个容器服务器，值通常为css选择器字符
+            data:{
+                name:'guohua',//data 用于存储数据，数据供el所指定的容器去使用，值我们暂时先写成一个对象。
+                school:{
+                    name:"guge",
+                    address:'new york',
+                    url:'https://www.google.com/'
+                }
+                
+            }
+            
+        })
+
+
+
+    </script>
+</body>
+</html>
