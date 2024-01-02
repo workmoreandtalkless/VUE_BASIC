@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理解MVVM</title>
+            <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- MVVM模型
+        1. M: Model: data中的数据
+        2. V: View : 模板代码
+        3. VM: ViewModel: Vue 实例
+        观察发现：
+        1. data中所有的属性，最后都出现在了vm身上
+        2. vm身上所有的属性 及Vue原型上所有属性，在Vue模板中都可以直接使用。
+    -->
+        <div id="root">
+            <h1>school name: {{name}}</h1>
+            <h1>school address: {{address}}</h1>
+            <h1>test1: {{address}}</h1>
+            <h1>test2: {{$emit}}</h1>
+            <h1>test2: {{_c}}</h1>
+        </div>
+
+        <script type="text/javascript">
+            Vue.config.productionTip = false //阻止Vue 在启动时生成生产提示 
+           const vm= new Vue({
+                el:'#root', 
+              
+                data(){
+                    console.log('@@@',this)
+                    return{
+                        name: '尚硅谷',
+                        address: 'Beijing'
+                    }
+                }
+        
+                
+            })
+        
+        console.log(vm)
+        </script>
+</body>
+</html>
