@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.姓名案例_插值语法实现</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        lastName: <input type="text" v-model="firstName"> <br/><br/>
+        firstName:<input type="text" v-model="lastName"> <br/><br/>
+        fullName: <span>{{fullName()}}</span>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+     const vm =  new Vue({
+            el:'#root',
+            data:{
+                firstName:'zhang',
+                lastName:'san'
+            },
+            methods: {
+                fullName(){
+                    return this.firstName + '-' + this.lastName
+                }
+            },
+           
+        })
+    </script>
+</body>
+</html>

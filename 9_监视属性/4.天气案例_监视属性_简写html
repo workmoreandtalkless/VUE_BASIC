@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.天气案例_深度监视</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+    <div id="root">
+      <h2>today is {{info}}</h2>
+        <!-- <button @click="isHot = !isHot">change</button> -->
+        <button @click="changeweather">change</button>
+        <hr/>
+
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        
+     const vm =  new Vue({
+            el:'#root',
+            data:{
+                isHot:true,
+                numbers:{
+                    a:1,
+                    b:1
+                }
+            },
+            computed:{
+                info(){
+                    return this.isHot? 'hot':'cold'
+                }
+            },
+            methods: {
+                changeweather(){
+                    this.isHot = !this.isHot;
+                }
+            },
+           watch:{
+            //简写
+            isHot(newValue,oldValue){
+                console.log('ishot is changed', newValue,oldValue);
+            },
+            //正常写法
+            // isHot:{
+            //     immediate:true, //初始化时让handler调用一下
+            //     deep:ture, //深度监视
+
+            //     handler(newValue,oldValue){
+            //         console.log('ishot is changed', newValue,oldValue);
+            //     }
+            // },
+           }
+        })
+        //简写
+        // vm.$watch('isHot',function(newValue,oldValue){
+        //     console.log('ishot is changed', newValue,oldValue);
+        // })
+
+        //正常写法
+        // vm.$watch('isHot',{
+        //     immediate:true, //初始化时让handler调用一下
+        //         deep:ture, //深度监视
+
+        //         handler(newValue,oldValue){
+        //             console.log('ishot is changed', newValue,oldValue);
+        //         }
+        // })
+    </script>
+</body>
+</html>

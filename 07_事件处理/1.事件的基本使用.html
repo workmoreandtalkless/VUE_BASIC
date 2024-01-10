@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的基本使用</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>欢迎来到{{name}}学习</h2>
+        <!-- <button v-on:click="showinfo">click me for tips</button> -->
+        <button @click="showinfo1">click me for tips1(no param)</button>
+        <button @click="showinfo2(66,$event)">click me for tips2(with parameter)</button>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+     const vm =  new Vue({
+            el:'#root',
+            data:{
+                name:'shangguigu'
+            },
+            methods: {
+                showinfo1(event){
+                    console.log(event.target.innerText)
+                    alert('hello !')
+                },
+
+                showinfo2(number,a){
+                    console.log(number)
+                    console.log(a.target.innerText)
+                    alert('hello !!')
+                }
+                // showinfo(a,b,c,d){
+                //     console.log(a,b,c,d)
+                //      console.log(this) //此处的this是vm
+                //     // alert('hello !')
+                // }
+
+                //用箭头函数时，this为window
+                // showinfo:(event)=>{
+                //     console.log(a,b,c,d)
+                //      console.log(this) //此处的this是window,全局。 Vue管理的最好是普通函数
+                //     // alert('hello !')
+                // }
+            },
+        })
+    </script>
+</body>
+</html>

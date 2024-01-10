@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        *{
+            margin-top: 20px;
+        }
+        .demo1{
+
+            height: 50px;
+            background-color: skyblue;
+        }
+        .box1{
+            padding: 5px;
+            background-color: skyblue;
+        }
+        .box2{
+            padding: 5px;
+            background-color: orange;
+        }
+        .list{
+            width: 200px;
+            height: 200px;
+            background-color: peru;
+            overflow: auto;
+        }
+        li{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h2>欢迎来到{{name}}学习</h2>
+        <!-- 阻止默认事件（常用） -->
+        <a href="http://www.google.com" @click.prevent="showinfo" >click me for tips1</a>
+        <!-- 阻止事件冒泡（常用） -->
+        <div class="demo1" @click="showinfo">
+                <button @click.stop="showinfo">click me for tips</button>
+        </div>
+        <!-- 事件只触发一次（常用） -->
+        <button @click.once="showinfo">click me for tips</button>
+        <!-- 使用事件的捕获模式 -->
+        <div class="box1" @click.capture="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>
+        <!-- 只有event.target是当前操作的元素时才触发事件； -->
+        <div class="demo1" @click.self="showinfo1">
+            <button @click="showinfo1">click me for tips</button>
+        </div>
+        <!-- 事件的默认行为为立即执行，无需等待事件回调执行完毕； -->
+        <ul @scroll="scrolldemo" class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+
+        <ul @wheel.passive="scrolldemo" class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+     const vm =  new Vue({
+            el:'#root',
+            data:{
+                name:'shangguigu'
+            },
+            methods: {
+                showinfo(event){
+                    console.log(event.target.innerText)
+                    alert('hello !')
+                },
+                showMsg(e){
+                    console.log(e)
+                },
+                showinfo1(e){
+                    console.log(e.target)
+                    
+                },
+                scrolldemo(){
+                    for(let i=0;i<100000;i++){// 我触发鼠标滚轮，然后scrolldemo函数调用，然后回调函数调用，然后滚动条往下走一点
+                        console.log('#')
+                    }
+                    console.log('tired')
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.姓名案例_插值语法实现</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        lastName: <input type="text" v-model="firstName"> <br/><br/>
+        firstName:<input type="text" v-model="lastName"> <br/><br/>
+        fullName: <span>{{fullName}}</span><br/>
+        fullName: <span>{{fullName}}</span><br/><br/>
+        fullName: <span>{{fullName}}</span><br/><br/>
+        fullName: <span>{{fullName}}</span><br/>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+     const vm =  new Vue({
+            el:'#root',
+            data:{
+                firstName:'zhang',
+                lastName:'san'
+            },
+            methods: {
+                demo(){
+
+                }
+            },
+            computed:{
+                fullName:{
+                    //get有什么作用？ 当有人读取fullName时，get就会被调用，且返回值就作为fullName的值
+                    //get 什么时候调用？ 1. 初次读取fullName时。2所依赖的数据发生变化时。
+                    get(){
+                        console.log('get is called');
+                        // this ,此处的this is vm
+                        return this.firstName + '-' + this.lastName
+                    },
+                    //set 什么时候被调用？ 当fullName被修改时
+                    set(value){
+                        const arr = value.split('-')
+                        this.firstName = arr[0];
+                        this.lastName = arr[1];
+                        
+                        console.log('lastName: ',this.lastName);
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
