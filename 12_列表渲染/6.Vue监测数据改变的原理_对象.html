@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue监测数据改变的原理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+  
+    <div id="root">
+        <h2>xuexiao name: {{name}}</h2>
+        <h2>xuexiao dizhi: {{add}}</h2>
+   
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+     const vm =  new Vue({
+            el:'#root',
+           data:{
+            name: 'shanggugui',
+            add : 'place',
+            student:{
+                id:1,
+                name:'comeon'
+            }
+           }
+        })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本列表</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+  
+    <div id="root">
+        <h2>person list</h2>
+        <!-- error             -->
+        <!-- <ul>
+        <li v-for="(a,b,c) in persons" :key="person.id">
+            {{a}} - {{b}}
+        </li>
+      </ul> -->
+
+      <!-- <ul>
+        <li v-for="person in persons" :key="person.id">
+            {{person.name}} - {{person.age}}
+        </li>
+      </ul> -->
+
+
+
+      <!-- c is unbound -->
+      <!-- <ul>
+        <li v-for="(a,b,c) in persons" >
+            {{a}} - {{b}} - {{c}}
+        </li>
+      </ul> -->
+      <!-- 遍历数组 -->
+      <ul>
+        <li v-for="(p,index) in persons" :key="index">
+            {{p.name}} - {{p.age}}
+        </li>
+      </ul>
+
+
+      <ul>
+        <li v-for="(p,index) of persons" :key="index">
+            {{p.name}} - {{p.age}}
+        </li>
+      </ul>
+
+      <ul>
+        <li v-for="(p,index) of persons" :key="index">
+            {{p.name}} - {{p.age}}
+        </li>
+      </ul>
+
+      <!-- 遍历对象 -->
+      <h2>car information</h2>
+        <ul>
+            <li v-for="(value,key) of car" :key="key">
+                {{key}} - {{value}}
+            </li>
+        </ul>
+        <!-- 遍历字符串 -->
+        <h2>遍历字符串</h2>
+        <ul>
+            <li v-for="(value,index) of str" :key="index">
+                {{key}} - {{value}}
+            </li>
+        </ul>
+        <!-- 遍历指定次数 -->
+        <h2>遍历字符串</h2>
+        <ul>
+            <li v-for="(number,index) of 5" :key="index">
+                {{index}} - {{number}}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+     const vm =  new Vue({
+            el:'#root',
+            data:{
+                persons:[
+                    {
+                        id:'001',name:'zhangsan',age:18
+                    },
+                    {
+                        id:'002',name:'lisi',age:19
+                    },
+                    {
+                        id:'003',name:'wanwu',age:20
+                    },
+                ],
+                car:{
+                        name: 'audiA8',
+                        price:'70',
+                        color: 'black'
+                },
+                str:'hello'
+            },
+           
+        })
+    </script>
+</body>
+</html>
